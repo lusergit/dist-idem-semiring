@@ -34,6 +34,13 @@
   between 2 nodes is an idempotent semiring with regards to the
   operations \(\vee\) (sum) and \(\wedge\) (multiplication), and the
   respective neutral elements (=hop zero= and =nohop=).
+* Verifiy
+  the script =verify.sh= automatically loads all the library files
+  into an index file and tries to import them, causing agda to check
+  the whole project. To use it is just a matter of running
+  #+begin_src sh
+    ./verify.sh
+  #+end_src
 * Caveats
   The project is self-contained, it does not rely on any external
   library to work, just on the agda interpreter. Both equality
