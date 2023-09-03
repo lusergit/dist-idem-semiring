@@ -1,0 +1,36 @@
+#+title: Distance is a dioid (idempotent semi-ring)
+#+author: Luca Zaninotto -- 2057074
+#+date: \today
+* Distance
+  We defined =Distance= between two nodes in a graph (as described in
+  ref) as
+  #+begin_src agda
+    data Distance : Set where
+	hop   : ℕ → Distance
+	nohop :     Distance
+  #+end_src
+  in other words, two nodes are either connected trough a number of
+  hops (=hop n=) or there is no known path between them (=nohop=).
+** short-circuiting: choosing minimum distances
+   We subsequently defined 2 operations on distance: join and meet.
+   - join :: with the meaning that we could take either path from one
+     node to another:
+     #+begin_src agda
+       _∨_ : Distance → Distance → Distance
+	 hop x ∨ hop y = hop (min x y)
+	 a ∨ nohop = a
+	 nohop ∨ b = b
+     #+end_src
+   - meet :: with the intended menaing of actually join two path
+     togeter (resulting in one big path)
+     #+begin_src agda
+       _∧_ : Distance → Distance → Distance
+	 hop x ∧ hop y = hop (x + y)
+	 a ∧ nohop = nohop
+	 nohop ∧ b = nohop
+     #+end_src
+* Dioid
+  With the latter definitions we are able to prove that the Distance
+  between 2 nodes is an idempotent semiring with regards to the
+  operations \(\vee\) (sum) and \(\wedge) (multiplication), and the
+  respective neutral elements (=hop zero= and =nohop=).
