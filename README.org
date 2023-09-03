@@ -32,5 +32,10 @@
 * Dioid
   With the latter definitions we are able to prove that the Distance
   between 2 nodes is an idempotent semiring with regards to the
-  operations \(\vee\) (sum) and \(\wedge) (multiplication), and the
+  operations \(\vee\) (sum) and \(\wedge\) (multiplication), and the
   respective neutral elements (=hop zero= and =nohop=).
+* Caveats
+  The project is self-contained, it does not rely on any external
+  library to work, just on the agda interpreter. Both equality
+  (\(\equiv\)) and natural numbers \(\mathbb{N}\) are defined in the
+  project and some theorems are proven if needed.
